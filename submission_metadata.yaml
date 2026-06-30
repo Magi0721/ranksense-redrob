@@ -6,7 +6,7 @@ team_name: "RankSense"
 primary_contact:
   name: "Magi Vaishnavi S"
   email: "magivaishnavi922@gmail.com"
-  phone: "+91-XXXXXXXXXX"   # fill in before submitting
+  phone: "+91-7603914965"   
 
 team_members:
   - name: "Magi Vaishnavi S"
@@ -15,7 +15,7 @@ team_members:
 
 # ============================================================================
 github_repo: "https://github.com/Magi0721/ranksense-redrob"
-sandbox_link: "https://colab.research.google.com/drive/XXXXXXXXXXXX"  # fill in after creating sandbox notebook
+sandbox_link: "https://colab.research.google.com/drive/19kCCuZAVtM7bzOpPekZZ74UQOesCWQ8o?usp=sharing"  
 reproduce_command: "python src/rank.py --candidates ./candidates.jsonl --out ./submission.csv --xlsx-out ./submission.xlsx"
 
 # ============================================================================
