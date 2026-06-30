@@ -1,0 +1,71 @@
+# Redrob Hackathon — Submission Metadata
+# RankSense
+
+team_name: "RankSense"
+
+primary_contact:
+  name: "Magi Vaishnavi S"
+  email: "magivaishnavi922@gmail.com"
+  phone: "+91-XXXXXXXXXX"   # fill in before submitting
+
+team_members:
+  - name: "Magi Vaishnavi S"
+    email: "magivaishnavi922@gmail.com"
+    role: "Solo participant — ML/Engineering"
+
+# ============================================================================
+github_repo: "https://github.com/Magi0721/ranksense-redrob"
+sandbox_link: "https://colab.research.google.com/drive/XXXXXXXXXXXX"  # fill in after creating sandbox notebook
+reproduce_command: "python src/rank.py --candidates ./candidates.jsonl --out ./submission.csv --xlsx-out ./submission.xlsx"
+
+# ============================================================================
+compute:
+  platform: "Local / Colab CPU runtime"
+  cpu_cores: 4
+  ram_gb: 16
+  python_version: "3.11"
+  os: "Ubuntu 22.04 LTS"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+
+# ============================================================================
+ai_tools_used:
+  - "Claude"
+
+ai_usage_summary: |
+  Used Claude (Anthropic) as a development assistant for architecture design,
+  code authoring, and debugging of the scoring pipeline and reasoning-string
+  generator. All scoring logic, feature weights, and disqualifier rules were
+  designed and reviewed against the released job description and signals
+  documentation. No candidate data was sent to any external LLM API at any
+  point — the ranking pipeline itself (rank.py) makes zero hosted API calls
+  and runs fully offline on CPU, consistent with the competition's compute
+  constraints.
+
+# ============================================================================
+methodology_summary: |
+  Hybrid ranker combining (1) structured role/seniority/location/education
+  fit read from profile and career_history, (2) trust-adjusted skill
+  matching that discounts claimed skills unsupported by the candidate's own
+  Redrob skill_assessment_scores or implausible duration_months, (3)
+  semantic fit via TF-IDF + cosine similarity between JD text and candidate
+  free text (no pretrained embeddings, fully offline), (4) hard disqualifier
+  multipliers mirroring the JD's explicit exclusion list (consulting-only
+  career, pure-research-without-deployment, shallow recent-only LangChain
+  experience, CV/speech/robotics-only background, title-chasing tenure
+  patterns, leadership-only roles with no recent hands-on code), and (5) a
+  behavioral availability multiplier from recruiter response rate, last
+  active date, interview completion rate, and notice period. An upstream
+  honeypot/integrity filter excludes internally-inconsistent profiles
+  (e.g. "expert" proficiency with 0 months used) before scoring. Full
+  100K-candidate run completes in well under a minute on CPU.
+
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
